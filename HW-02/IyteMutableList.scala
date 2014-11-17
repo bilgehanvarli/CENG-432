@@ -1,3 +1,5 @@
+import scala.collection.mutable.ArrayBuffer
+
 class IyteMutableList {
   var array = new ArrayBuffer[Int]()
 
