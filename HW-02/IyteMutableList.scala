@@ -1,4 +1,5 @@
 import scala.collection.mutable.ArrayBuffer
+import java.lang.StringBuilder
 
 class IyteMutableList {
   var array = new ArrayBuffer[Int]()
@@ -8,15 +9,18 @@ class IyteMutableList {
   }
 
   override def toString = {
-    var str = array.applyOrElse(0, {_: Int => ""}).toString
-    // execute if size > 0
-    for (i <- 1 until array.length) {
-      str = str.concat("," +  array(i))
+    if(array.size == 0) ""
+    else {
+      val strBuf = new StringBuilder(array(0).toString)
+      for (i <- 1 until array.length) {
+        strBuf.append("," +  array(i))
+      }
+      strBuf.toString
     }
-    str
   }
 }
 
 object IyteMutableList extends IyteMutableList{
   def apply = new IyteMutableList()
 }
+
